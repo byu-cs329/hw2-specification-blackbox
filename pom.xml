@@ -100,12 +100,12 @@
 						<tag>
 							<name>ensures</name>
 							<placement>ac</placement>
-							<head>Ensures</head>
+							<head>Ensures:</head>
 						</tag>
 						<tag>
 							<name>requires</name>
 							<placement>ac</placement>
-							<head>Requires</head>
+							<head>Requires:</head>
 						</tag>
 					</tags>
 				</configuration>
@@ -152,12 +152,12 @@
 						<tag>
 							<name>ensures</name>
 							<placement>ac</placement>
-							<head>Ensures</head>
+							<head>Ensures:</head>
 						</tag>
 						<tag>
 							<name>requires</name>
 							<placement>ac</placement>
-							<head>Requires</head>
+							<head>Requires:</head>
 						</tag>
 					</tags>
 				</configuration>
