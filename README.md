@@ -68,7 +68,7 @@
 
     For example, in a queue, the *size()* method returns the size of the queue. The specification does not say *how that size is computed* nor does is say *how the size is represented by the implementation*. It only says that *size()* returns the length of the queue and does not change the state of the queue. This specification approach is model based stating properties based on the more abstract model of a queue leaving out specific details to how the queue is implemented. Alternatively, any formal specification used to prove properties of the queue would need to map the actual implementation details to the model state and reason directly about implementation details. For black-box testing, model-based specification is typically the correct level of specification.
 
-    **Part A:** Write a model-based specification for the **Queue** class in the same manner as in the prior two problems.
+    **Part A:** Write a model-based specification for the **Queue** class (the requires and ensures clauses as shown in class).
 
     **Part B:** Identify invariants on the internal state of the **Queue** that must hold in order for the rotating-queue implementation to behave according to the queue model it is implementing. An important role of the specification is to make clear a sufficient set of requirements at each method to ensure that any invariants needed for correct model behavior hold. 
 
