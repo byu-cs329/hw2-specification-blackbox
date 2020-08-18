@@ -8,22 +8,21 @@
 
 # Class Standards for Black-box testing
 
-* The specification should make clear the requires and ensures for correct output
-* The ensures classes must be checked in any test
-* Invalid input that violates any requires clause should be tested and checked that it throws a `RuntimeException`
-* Ensures only includes something about exceptions if there is a throws-clause with a non-`RuntimeException`. * Pick a [naming convention](https://dzone.com/articles/7-popular-unit-test-naming) for the tests so that they are self-documenting and be consistent with that convention.
+  * The specification should make clear the requires and ensures for correct output
+  * The ensures classes must be checked in any test
+  * Invalid input that violates any requires clause should be tested and checked that it throws a `RuntimeException`
+  * Ensures only includes something about exceptions if there is a throws-clause with a non-`RuntimeException`. * Pick a [naming convention](https://dzone.com/articles/7-popular-unit-test-naming) for the tests so that they are self-documenting and be consistent with that convention.
  
  
 # Notes and Advice
 
-  * Whenever you might have to test several things together, in designing tests you have a choice that must be driven by at least two considerations among others:
+  * Test design should be driven by:
 
-    1. **Traceability** (from where did this defect came out?)
-    2. **Readability** (will any other programmer be able to read and understand the tests and their meaning in a reasonable amount of time?)
+    1. **Traceability**: from where did this defect originate from?
+    2. **Readability** are the tests self-documentating and understandable by others in a reasonbale amount of time?
 
-  * A test suite needs a proper design in the same way as a normal application does, so any time you write test code you should also keep an eye on how easy it will be to make it evolve together with the program it is testing.
-  * Keep the number of assertions per test case as low as possible. The ideal is to have one assertion per test case even though it leads to a lot of test methods. The goal is to have Every test case test a certain property, so if one case fails you know exactly which property is failing.
-  * There are scenarios in which multiple assertions are useful. For example, logical expressions that are evaluated together. Imagine you have to assert
+  * Write test code so that it can evolve together with the program it is testing.
+  * Imagine you have to assert
      
      ```java
       assert(a && b && c);
@@ -37,7 +36,7 @@
       assert(c);
       ```
       
-      The assertions make clear which value fails. You can also have situations in which the multiple assertions make sense together because they prove a property. For example, imagine that the goal is to prove that two queues have the same values with the exception of the last value. A solution can factor the two assertion into a single method as follows.
+  * Group assertions in meaningful ways. For example, imagine that the goal is to prove that two queues have the same values with the exception of the last value. A solution can factor the two assertion into a single method as follows:
       
       ```java
       @Test
