@@ -17,107 +17,84 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
-		<junit.jupiter.version>5.5.1</junit.jupiter.version>
+		<junit.jupiter.version>5.6.2</junit.jupiter.version>
+		<maven.compiler.version>3.8.1</maven.compiler.version>
+		<maven.site.version>3.9.1</maven.site.version>
+		<checkstyle.version>3.1.1</checkstyle.version>
+		<surefire.version>3.0.0-M5</surefire.version>
+		<javadoc.version>3.2.0</javadoc.version>
 	</properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-			<version>1.7.27</version>
-		</dependency>
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter</artifactId>
 			<version>${junit.jupiter.version}</version>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
+		<!-- <dependency>
 			<groupId>edu.byu.cs329</groupId>
 			<artifactId>WorkSchedule</artifactId>
 			<version>1.0</version>
 			<scope>system</scope>
 			<systemPath>${basedir}/lib/WorkSchedule.jar</systemPath>
-		</dependency>
+		</dependency> -->
+		<dependency>
+			<groupId>edu.byu.cs329</groupId>
+			<artifactId>WorkSchedule</artifactId>
+			<version>0.0.1</version>
+	</dependency>
 	</dependencies>
 
-
 	<build>
-		<pluginManagement><!-- lock down plugins versions to avoid using Maven 
-				defaults (may be moved to parent pom) -->
-			<plugins>
-				<!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
-				<plugin>
-					<artifactId>maven-clean-plugin</artifactId>
-					<version>3.1.0</version>
-				</plugin>
-				<!-- default lifecycle, jar packaging: see https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
-				<plugin>
-					<artifactId>maven-resources-plugin</artifactId>
-					<version>3.0.2</version>
-				</plugin>
-				<plugin>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<version>3.8.0</version>
-				</plugin>
-				<plugin>
-					<artifactId>maven-jar-plugin</artifactId>
-					<version>3.0.2</version>
-				</plugin>
-				<plugin>
-					<artifactId>maven-install-plugin</artifactId>
-					<version>2.5.2</version>
-				</plugin>
-				<plugin>
-					<artifactId>maven-deploy-plugin</artifactId>
-					<version>2.8.2</version>
-				</plugin>
-				<!-- site lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#site_Lifecycle -->
-				<plugin>
-					<artifactId>maven-site-plugin</artifactId>
-					<version>3.7.1</version>
-				</plugin>
-				<plugin>
-					<artifactId>maven-project-info-reports-plugin</artifactId>
-					<version>3.0.0</version>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-surefire-plugin</artifactId>
-					<version>3.0.0-M3</version>
-				</plugin>
-			</plugins>
-		</pluginManagement>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>3.1.1</version>
+				<artifactId>maven-install-plugin</artifactId>
+				<version>2.5.2</version>
+				<executions>
+						<execution>
+								<id>install-external</id>
+								<phase>process-resources</phase>
+								<configuration>
+										<file>${basedir}/lib/Workschedule.jar</file>
+										<repositoryLayout>default</repositoryLayout>
+										<groupId>edu.byu.cs329</groupId>
+										<artifactId>Workschedule</artifactId>
+										<version>0.0.1</version>
+										<packaging>jar</packaging>
+										<generatePom>true</generatePom>
+								</configuration>
+								<goals>
+										<goal>install-file</goal>
+								</goals>
+						</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+				<version>${maven.site.version}</version>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compiler.version}</version>
 				<configuration>
-					<show>private</show>
-					<nohelp>true</nohelp>
-					<tags>
-						<tag>
-							<name>ensures</name>
-							<placement>ac</placement>
-							<head>Ensures:</head>
-						</tag>
-						<tag>
-							<name>requires</name>
-							<placement>ac</placement>
-							<head>Requires:</head>
-						</tag>
-					</tags>
+						<source>${maven.compiler.source}</source>
+						<target>${maven.compiler.source}</target>
 				</configuration>
 			</plugin>
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>
-				<version>3.1.0</version>
+				<version>${checkstyle.version}</version>
 				<configuration>
 					<configLocation>google_checks.xml</configLocation>
-					<encoding>UTF-8</encoding>
+					<encoding>${project.build.sourceEncoding}</encoding>
 					<consoleOutput>true</consoleOutput>
 					<failsOnError>true</failsOnError>
 					<linkXRef>false</linkXRef>
@@ -132,10 +109,11 @@
 					</execution>
 				</executions>
 			</plugin>
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-report-plugin</artifactId>
-				<version>3.0.0-M3</version>
+				<version>${surefire.version}</version>
 			</plugin>
 		</plugins>
 	</build>
@@ -145,8 +123,9 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>3.1.1</version>
+				<version>${javadoc.version}</version>
 				<configuration>
+					<source>8</source>
 					<show>public</show>
 					<tags>
 						<tag>
