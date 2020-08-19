@@ -7,9 +7,9 @@ public class Misc {
    * 
    * @requires x != null
    * @requires arr != null
-   * @requires exists i in arr (i == null)
+   * @requires exists i in arr (i = null)
    * 
-   * @ensures at return that exists i in arr (i == x)
+   * @ensures exists i in arr (i = x)
    * 
    * @param x element to add
    * @param arr array to which x is added
