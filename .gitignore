@@ -5,4 +5,5 @@ target
 .settings
 .checkstyle
 *.log
-
+.DS_Store
+.vscode

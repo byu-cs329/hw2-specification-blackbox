@@ -63,15 +63,24 @@
   
 # Problems
 
-1. **(30 points)** Consider the **Queue** class that implements a queue with a *rotating array*. The success of testing depends on what is expected and that is defined by the specification. The specification should be *model based* and state properties relative to a *model class* which in this case is a queue; alternatively, a specification can be more formal stating how the internal state of the class changes on each method and ultimately represents the model state.
+1. **(30 points)** Write a specification for a **Queue** class.
 
-    For example, in a queue, the *size()* method returns the size of the queue. The specification does not say *how that size is computed* nor does is say *how the size is represented by the implementation*. It only says that *size()* returns the length of the queue and does not change the state of the queue. This specification approach is model based stating properties based on the more abstract model of a queue leaving out specific details to how the queue is implemented. Alternatively, any formal specification used to prove properties of the queue would need to map the actual implementation details to the model state and reason directly about implementation details. For black-box testing, model-based specification is typically the correct level of specification.
+  Consider the **Queue** class that implements a queue with a *rotating array*. Testing the implementation depends on an expected behavior that is defined by a specification. Any specification for testing should be *model based* and declaratively state properties relative to a *model* with a *well defined state*. The specification makes clear how the state is referenced and changed by each method. For example, in a queue, the *size()* method returns the size of the queue. The specification does not say *how that size is computed* nor does is say *how the size is represented by any implementation*. It only says that *size()* returns the number of elements in the queue and does not change the state of the queue. As such, model based specification leaves out details to how a class is implemented and rather states declaratively how the class behaves. If the goal is to formally verify that a class implements a specification, then it becomes necessary to map the actual implementation to the model state. For black-box testing, model-based specification is typically the correct level of specification. 
 
-    **Part A:** Write a model-based specification for the **Queue** class (the requires and ensures clauses as shown in class).
+  The state of the model for this specification is an array. Use the below notation in the specification:
 
-    **Part B:** Identify invariants on the internal state of the **Queue** that must hold in order for the rotating-queue implementation to behave according to the queue model it is implementing. An important role of the specification is to make clear a sufficient set of requirements at each method to ensure that any invariants needed for correct model behavior hold. 
+     * Elements can be compared for equality as in `x = y`
+     * `Q` is the current state of the queue in any method (e.g., it is like the `this` pointer only rather than `this` it is `Q` for readability)
+     * `fresh()` creates an empty queue
+     * `size(Q)` returns the number of elements in the queue
+     * `Q[i]` returns the element at location `i` in `Q` for `0 <= i < size(Q)`
+     * `old(Q)` is the previous state of `Q` to use in `ensures` clauses (e.g., provide a means to compare the pre-method state, `old(Q)`,  to the post method state, `Q`)
 
-2. **(20 points)** Consider the method *ff* in the class **Misc** with its specification.
+  **Part A:** Write the model based specification for each method of the **Queue** class assuming the queue has unlimited capacity.
+
+  **Part B:** Write any additional *requires* for each method such that each method is constrained so that it behaves like the model queue. In other words, identify invariants on the internal state of the rotating-queue implementation that must hold for the implementation to behave according to the queue model it is implementing. 
+
+2. **(20 points)** Refine the specification and write tests for the method *ff* in class **Misc**.
 
     **Part A:** the precondition in the `@requires` clause can be weakened, meaning that it can be less restrictive in certain situations. Write that weaker clause.
 
@@ -79,7 +88,9 @@
 
     **Part C:** Apply [black-box testing](https://en.wikipedia.org/wiki/Black-box_testing) to create and implement [JUnit 5](https://junit.org/junit5/) tests in the **FTests** class. Clearly document each test in the class. These tests should be based on the specification.
 
-3. **(50 points)** Your task is to derive test cases for a number of methods using their specifications. Analyze the specifications in order to divide the set of possible inputs into different situations. Then write a set of test cases for each method, which covers the different cases well.
+3. **(50 points)** Write tests for the **WorkSchedule** class.
+
+    Your task is to derive test cases for a number of methods using their specifications. Analyze the specifications in order to divide the set of possible inputs into different situations. Then write a set of test cases for each method, which covers the different cases well.
 
     The assignment is about a class called **WorkSchedule**. The purpose of the class is to manage the schedule for the employees of a company. The time is divided in units of 1 hour and the hours are simply identified by integers (Note that this is an unrealistic simplification). For each hour, the schedule stores the number employees which is needed at that time. It could for instance be that during week-days the need is that 5 employees work at the same time, but less during nights and weekend. For each hour the schedule also stores the names of the employees who have been assigned to work at that hour.
     
@@ -143,4 +154,4 @@
 
 # Acknowledgements
 
-Adapted from [TDA567/DIT082, LP2, HT2015](http://www.cse.chalmers.se/edu/year/2016/course/course/TDA567_Testing_debugging_and_verification/schedule.html) by Atze van de Ploeg formerly at the University of Gothenburg, Chalmers, Deparment of Computer Science and Engineering.
+Adapted from [TDA567/DIT082, LP2, HT2015](http://www.cse.chalmers.se/edu/year/2016/course/course/TDA567_Testing_debugging_and_verification/schedule.html) by Atze van de Ploeg formerly at the University of Gothenburg, Chalmers, Department of Computer Science and Engineering.
