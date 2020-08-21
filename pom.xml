@@ -43,7 +43,7 @@
 
 		<dependency>
 			<groupId>edu.byu.cs329</groupId>
-			<artifactId>WorkSchedule</artifactId>
+			<artifactId>Workschedule</artifactId>
 			<version>0.0.1</version>
 		</dependency>
 	</dependencies>
