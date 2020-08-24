@@ -88,21 +88,29 @@
 
     **Part C:** Apply [black-box testing](https://en.wikipedia.org/wiki/Black-box_testing) to create and implement [JUnit 5](https://junit.org/junit5/) tests in the **FTests** class. Clearly document each test in the class. These tests should be based on the specification.
 
-3. **(50 points)** Write tests for the **WorkSchedule** class.
+3. **(50 points)** Write the specification and tests for the **WorkSchedule** class.
 
-    Your task is to derive test cases for a number of methods using their specifications. Analyze the specifications in order to divide the set of possible inputs into different situations. Then write a set of test cases for each method, which covers the different cases well.
+    Your task is to derive test cases for a number of methods after writing their specifications from the informal prose. Analyze the specifications in order to divide the set of possible inputs into different situations. Then write a set of test cases for each method, which covers the different cases well.
 
     The assignment is about a class called **WorkSchedule**. The purpose of the class is to manage the schedule for the employees of a company. The time is divided in units of 1 hour and the hours are simply identified by integers (Note that this is an unrealistic simplification). For each hour, the schedule stores the number employees which is needed at that time. It could for instance be that during week-days the need is that 5 employees work at the same time, but less during nights and weekend. For each hour the schedule also stores the names of the employees who have been assigned to work at that hour.
     
-    **Your task**: for each specification below
+    **Your task**: for each method below
     
-      * Specify (the domain and) the input space for each argument to the method (including the object of that method).
-      * Divide this input space into partitions, based on the specification.
-      * Implement at least one test case for each partition, and possibly additional border cases. The **WorkSchedule** class is in a jar in the project. Use [JUnit 5](https://junit.org/junit5/) for the tests and put them in the **WorkScheduleTests** class.
-      * Implement tests based on boundary-value analysis for the input partitions. 
+      * Write the *requires* and *ensures* to define the domain and input space for each argument and return value
+      * Divide the input space into partitions based on the *requires* and *ensures*
+      * Apply [black-box testing](https://en.wikipedia.org/wiki/Black-box_testing) for **any three* of the methods using the *requires* and *ensures* clauses, input partitions, and boundary value analysis 
       
-    For each test case, give a comment or method name which describes what situation it tests. Additionally, you must explain and motivate why you divided the test cases in the way you did. You must show how you defined the input space, and how you partitioned it. 
+    The **WorkSchedule** class is in a jar in the project and cannot be modified. As such, but the specifications with the *requires* and *ensures* clauses for each method in the **WorkScheduleTests** class. Use [JUnit 5](https://junit.org/junit5/) for the tests and put the tests in the **WorkScheduleTests** class. Only three (any three) methods need tests. All methods need specification.
+      
+    Be sure tests are commented with names that describe the tests. Additionally, explain and motivate how the input space is divided.
 
+    **Advice:**
+
+      * The english prose for each method can be understood in many ways. Write the specification and tests as you understand the prose and not what you discover the **WorkSchedule** class to actually do.
+      * Define notation for the specifications such as `ws` for the current instance of **WorkSchedule**, `size` as the size of `ws`, `old(ws)` to refer to the old version of the current instance of the **WorkSchedule**, etc.
+      * Use **WorkSchedule.workingEmployees** to get scheduled employees for an hour to avoid dealing too much with the internals of **WorkSchedule.Hour** as the meaning of that class is not well defined.  
+      * Stay calm and be patient. The english prose makes test hard because it is ambiguous.
+     
 ```java
 /**
  * creates a schedule which contains the hours 0,1,2,( ...,size - 1 where for
