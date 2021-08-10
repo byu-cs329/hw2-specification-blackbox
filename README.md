@@ -151,14 +151,13 @@
  public int nextIncomplete(int currenttime) {}
 ```
 
-# Grading Rubric
+# Grading
 
-| Problem | Point Value | Your Score |
-| ------- | ----------- | ---------- |
-| `Queue` specification | 30 | |
-| `ff` specification and tests | 20 | |
-| `WorkSchedule` tests | 50 | |
-| General adherence the class standards for style, names, etc. | 10 | |
+Upon completion of the homework and uploading of your pull request, GitHub will give you a sanity check by running `mvn compile test` on your code. 
+Note that passing the build *does not* mean that you will get full credit for the assignment. 
+Also, your tests for `WorkSchedule` *do not* need to pass. GitHub Actions will run your code ignoring the failed tests.
+
+Please reread this writeup to make sure you have completed all the requirements, and refer to the grading rubric on Canvas for details on grading.
 
 # Acknowledgements
 
