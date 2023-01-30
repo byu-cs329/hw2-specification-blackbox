@@ -100,7 +100,7 @@
       * Divide the input space into partitions based on the *requires* and *ensures*
       * Apply [black-box testing](https://en.wikipedia.org/wiki/Black-box_testing) for **any three* of the methods using the *requires* and *ensures* clauses, input partitions, and boundary value analysis 
       
-    The **WorkSchedule** class is in a jar in the project and cannot be modified. As such, but the specifications with the *requires* and *ensures* clauses for each method in the **WorkScheduleTests** class. Use [JUnit 5](https://junit.org/junit5/) for the tests and put the tests in the **WorkScheduleTests** class. Only three (any three) methods need tests. All methods need specification.
+    The **WorkSchedule** class is in a jar in the project and cannot be modified. As such, put the specifications with the *requires* and *ensures* clauses for each method in the **WorkScheduleTests** class. Use [JUnit 5](https://junit.org/junit5/) for the tests and put the tests in the **WorkScheduleTests** class. Only three (any three) methods need tests. All methods need specification.
       
     Be sure tests are commented with names that describe the tests. Additionally, explain and motivate how the input space is divided.
 
