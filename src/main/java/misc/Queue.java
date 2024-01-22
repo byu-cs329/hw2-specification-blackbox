@@ -8,7 +8,7 @@ public class Queue {
 
   /**
    * Creates a queue with a bounded size.
-   * 
+   *
    * @param max   the size of the queue
    */
   public Queue(int max) {
@@ -28,7 +28,7 @@ public class Queue {
 
   /**
    * Adds a new object into the queue.
-   * 
+   *
    * @param x the object to add to the queue
    */
   public void enqueue(Object x) {
@@ -42,7 +42,7 @@ public class Queue {
 
   /**
    * Removes an object from the queue.
-   * 
+   *
    * @return the removed object
    */
   public Object dequeue() {
